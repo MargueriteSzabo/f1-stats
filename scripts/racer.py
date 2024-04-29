@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 
 def points_per_year_per_driver(driver_name):
+    #gives the total number of points per season per driver
     df=pd.read_csv('data/race_results.csv')
     res = df[['season', 'driver', 'points']].groupby(['season',
                                                       'driver']).sum()
@@ -11,6 +12,7 @@ def points_per_year_per_driver(driver_name):
 
 
 def points_per_race_race_driver(driver_name, race_name):
+    # gives the number of points per race per driver
     df = pd.read_csv('data/race_results.csv')
     res = df[['season', 'driver', 'circuit_id','points']].groupby(['season',
                                                       'driver','circuit_id']).sum()
@@ -21,6 +23,7 @@ def points_per_race_race_driver(driver_name, race_name):
                                (res['circuit_id'] == race_name))]
 
 def average_end_position(driver_name):
+    # gives the average finish position per yer per driver
     df = pd.read_csv('data/race_results.csv')
     res = df[['season', 'driver', 'podium']].groupby(['season', 'driver']).mean()
     res.reset_index(inplace=True)
@@ -28,6 +31,7 @@ def average_end_position(driver_name):
     return res[res['driver'] == driver_name]
 
 def average_points_per_race(driver_name):
+    # gives the average number of points gotten per year per driver
     df = pd.read_csv('data/race_results.csv')
     res = df[['season', 'driver', 'points']].groupby(['season',
                                                       'driver']).mean()
@@ -36,6 +40,7 @@ def average_points_per_race(driver_name):
     return res[res['driver'] == driver_name]
 
 def number_race_per_driver(driver_name):
+    # gives the total number of races a driver participated in
     df = pd.read_csv('data/race_results.csv')
     res = df[['driver', 'points']].groupby(['driver']).count()
     res.reset_index(inplace=True)
@@ -51,4 +56,4 @@ if __name__ == "__main__":
     #points_per_race_race_driver('sainz', 'silverstone')
     #average_end_position('sainz')
     #average_points_per_race('sainz')
-    number_race_per_driver('sainz')
+    #number_race_per_driver('sainz')
