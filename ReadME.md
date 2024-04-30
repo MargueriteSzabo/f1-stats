@@ -16,6 +16,8 @@ To do :
 To do :
 - get more stats
 - create visualisation
+- create stats on races
+- create stats on team
 - create dynamic statistics based on parameters
 
 ## Front
